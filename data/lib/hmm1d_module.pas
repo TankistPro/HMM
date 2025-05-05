@@ -8,6 +8,7 @@ uses
   Classes, SysUtils, Graphics;
 
 function NumberToColor(num: Integer): TColor;
+function IsEven(n: Integer): Boolean;
 
 var
    selectedHMM: String;
@@ -46,6 +47,12 @@ begin
        'HMM_N': Result := NumberToColor_N(num);
        'HMM_DN': Result := NumberToColor_DN(num);
    end;
+end;
+
+// Является ли число четным
+function IsEven(n: Integer): Boolean;
+begin
+  Result := (n mod 2 = 0); // Проверяем, четное ли число
 end;
 
 end.

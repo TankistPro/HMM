@@ -7,6 +7,9 @@ interface
 uses
   Classes, SysUtils, Graphics;
 
+function NumberToColor(num: Integer): TColor;
+function IsEven(n: Integer): Boolean;
+
 var
    selectedHMM: String;
 
@@ -44,6 +47,61 @@ begin
        'HMM_N': Result := NumberToColor_N(num);
        'HMM_DN': Result := NumberToColor_DN(num);
    end;
+end;
+
+// Является ли число четным
+function IsEven(n: Integer): Boolean;
+begin
+  Result := (n mod 2 = 0); // Проверяем, четное ли число
+end;
+
+procedure FillSpiralEvenNumbers(var A: array of array of Integer; N: Integer);
+var
+  left, right, top, bottom, i: Integer;
+  num: Integer;
+begin
+  left := 0;
+  right := N - 1;
+  top := 0;
+  bottom := N - 1;
+  num := 2; // Начинаем с первого чётного числа
+
+  while (left <= right) and (top <= bottom) do
+  begin
+    // Вправо
+    for i := left to right do
+    begin
+      A[top, i] := num;
+      num := num + 2;
+    end;
+    Inc(top);
+
+    // Вниз
+    for i := top to bottom do
+    begin
+      A[i, right] := num;
+      num := num + 2;
+    end;
+    Dec(right);
+
+    // Влево
+    if top <= bottom then
+      for i := right downto left do
+      begin
+        A[bottom, i] := num;
+        num := num + 2;
+      end;
+    Dec(bottom);
+
+    // Вверх
+    if left <= right then
+      for i := bottom downto top do
+      begin
+        A[i, left] := num;
+        num := num + 2;
+      end;
+    Inc(left);
+  end;
 end;
 
 end.

@@ -30,6 +30,7 @@ object Form2: TForm2
       ItemHeight = 25
       TabOrder = 0
       Text = 'VisualizationType'
+      OnChange = VisualizationTypeChange
     end
     object LabeledEdit1: TLabeledEdit
       Left = 17
@@ -45,6 +46,28 @@ object Form2: TForm2
       ParentFont = False
       TabOrder = 1
       Text = '0'
+    end
+    object LabeledEdit2: TLabeledEdit
+      Left = 17
+      Height = 33
+      Top = 192
+      Width = 312
+      EditLabel.Height = 25
+      EditLabel.Width = 312
+      EditLabel.Caption = 'Рамер квадрата'
+      EditLabel.ParentFont = False
+      EditLabel.Font.Style = [fsBold]
+      NumbersOnly = True
+      TabOrder = 2
+      Text = 'LabeledEdit2'
+    end
+    object isShowValues: TCheckBox
+      Left = 17
+      Height = 29
+      Top = 256
+      Width = 203
+      Caption = 'Показывать значение'
+      TabOrder = 3
     end
   end
   object Panel2: TPanel
@@ -99,6 +122,7 @@ object Form2: TForm2
       Caption = 'Расчет'
       Kind = bkRetry
       ModalResult = 4
+      OnClick = BitBtn2Click
       TabOrder = 1
     end
     object BitBtn3: TBitBtn
