@@ -10,6 +10,7 @@ object Form1: TForm1
   DesignTimePPI = 144
   Menu = MainMenu1
   LCLVersion = '3.8.0.0'
+  WindowState = wsFullScreen
   object Image1: TImage
     Left = 0
     Height = 900
@@ -3639,6 +3640,7 @@ object Form1: TForm1
       Caption = 'Справка'
       object MenuItem9: TMenuItem
         Caption = 'Содержание'
+        OnClick = MenuItem9Click
       end
       object MenuItem10: TMenuItem
         Caption = 'О программе'

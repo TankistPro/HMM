@@ -4,7 +4,7 @@ object Form2: TForm2
   Top = 225
   Width = 1240
   BorderStyle = bsToolWindow
-  Caption = 'Объкт 1D'
+  Caption = 'Объкт 1D (четные числа)'
   ClientHeight = 865
   ClientWidth = 1240
   DesignTimePPI = 144

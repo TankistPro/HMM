@@ -1,0 +1,72 @@
+object Form3: TForm3
+  Left = 1651
+  Height = 348
+  Top = 341
+  Width = 539
+  BorderStyle = bsSingle
+  Caption = 'Справка'
+  ClientHeight = 348
+  ClientWidth = 539
+  DesignTimePPI = 144
+  LCLVersion = '3.8.0.0'
+  object Label1: TLabel
+    Left = 0
+    Height = 120
+    Top = 0
+    Width = 539
+    Align = alTop
+    Alignment = taCenter
+    Caption = 'Справка программы HMM'
+    Font.Height = -44
+    Font.Style = [fsBold]
+    ParentFont = False
+    WordWrap = True
+  end
+  object Label2: TLabel
+    Left = 16
+    Height = 30
+    Top = 144
+    Width = 303
+    Caption = 'Программа предназначена для'
+    Font.Height = 30
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 16
+    Height = 30
+    Top = 184
+    Width = 246
+    Caption = 'хромоматематического'
+    Font.Height = 30
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 272
+    Height = 30
+    Top = 184
+    Width = 153
+    Caption = 'моделирования'
+    Font.Height = 30
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 16
+    Height = 30
+    Top = 224
+    Width = 269
+    Caption = 'числовых закономерностей'
+    Font.Height = 30
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 296
+    Height = 30
+    Top = 224
+    Width = 220
+    Caption = 'последовательностей'
+    Font.Height = 30
+    Font.Style = [fsItalic]
+    ParentFont = False
+  end
+end

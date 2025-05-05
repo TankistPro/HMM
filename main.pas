@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Menus, ExtCtrls, LCLIntf, LCLType,
-  Obejct1DForm;
+  Obejct1DForm, about;
 
 
 type
@@ -30,6 +30,7 @@ type
     procedure MenuItem10Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
     procedure MenuItem7Click(Sender: TObject);
+    procedure MenuItem9Click(Sender: TObject);
   private
 
   public
@@ -39,6 +40,7 @@ type
 var
   Form1: TForm1;
   Form1D: TForm2;
+  AboutForm: TForm3;
 
 implementation
 
@@ -58,6 +60,13 @@ begin
   if not Assigned(Form1D) then
       Form1D := TForm2.Create(Application);
   Form1D.Show;
+end;
+
+procedure TForm1.MenuItem9Click(Sender: TObject);
+begin
+   if not Assigned(AboutForm) then
+      AboutForm := TForm3.Create(Application);
+  AboutForm.Show;
 end;
 
 // О программе

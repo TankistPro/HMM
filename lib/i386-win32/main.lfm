@@ -3639,7 +3639,8 @@ object Form1: TForm1
     object MenuItem3: TMenuItem
       Caption = 'Справка'
       object MenuItem9: TMenuItem
-        Caption = 'Содержание'
+        Caption = 'Справка'
+        OnClick = MenuItem9Click
       end
       object MenuItem10: TMenuItem
         Caption = 'О программе'

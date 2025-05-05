@@ -129,7 +129,7 @@ var
 begin
   x := 0;
   y := 0;
-  Image1.Canvas.Font.Size := 9;
+  Image1.Canvas.Font.Size := 8;
   Image1.Canvas.Font.Color := clWhite;
 
   Image1.Canvas.Brush.Color := clMenu; // Новый цвет фона
