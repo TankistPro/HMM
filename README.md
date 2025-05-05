@@ -15,3 +15,16 @@
 унифицированных нормирующих множителей для дискретного сведения
 результата. Допускается использование различных «нормировочных
 коэффициентов».
+
+## Обект 1D (четные числа)
+
+### Визуализация - последовательная
+
+<img width="620" alt="image" src="https://github.com/user-attachments/assets/164c6bcf-afff-4a82-b708-3d1626d12b39" />
+
+<img width="622" alt="image" src="https://github.com/user-attachments/assets/ee2df615-a975-44a4-bf4f-f88818d7614d" />
+
+### Визуализация - спираль
+
+<img width="622" alt="image" src="https://github.com/user-attachments/assets/a0ea42c8-a288-458b-9007-a8134c0a736d" />
+
