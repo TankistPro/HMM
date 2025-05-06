@@ -20,11 +20,17 @@
 
 ### Визуализация - последовательная
 
-<img width="620" alt="image" src="https://github.com/user-attachments/assets/164c6bcf-afff-4a82-b708-3d1626d12b39" />
+<img width="620" alt="image" src="https://github.com/user-attachments/assets/d6edd9c3-a94f-496e-a18d-4ba8bf1ef1d2" />
 
-<img width="622" alt="image" src="https://github.com/user-attachments/assets/ee2df615-a975-44a4-bf4f-f88818d7614d" />
+
+<img width="622" alt="image" src="https://github.com/user-attachments/assets/4850522f-d029-46f0-989f-3bac33414816" />
+
 
 ### Визуализация - спираль
 
-<img width="622" alt="image" src="https://github.com/user-attachments/assets/a0ea42c8-a288-458b-9007-a8134c0a736d" />
+<img width="620" alt="image" src="https://github.com/user-attachments/assets/3b4f4ae0-4cff-4211-b7cf-42241ac1534c" />
+
+<img width="620" alt="image" src="https://github.com/user-attachments/assets/c8a15b44-2805-463b-8fc5-04b597de5712" />
+
+
 
