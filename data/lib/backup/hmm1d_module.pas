@@ -5,47 +5,94 @@ unit HMM1D_module;
 interface
 
 uses
-  Classes, SysUtils, Graphics;
+  Classes, SysUtils, Graphics, LCLIntf;
 
-function NumberToColor(num: Integer): TColor;
+procedure GeneratePalette;
 function IsEven(n: Integer): Boolean;
+function GetColorForNumber(num: Integer): TColor;
 
 var
    selectedHMM: String;
+   Palette: array of TColor;
+   ColorsSize: Integer;
+   DrawMethod: String;
 
 implementation
 
 // Функция раскраски для HMM_N
-function NumberToColor_N(num: Integer): TColor;
+procedure GeneratePalette_N;
+var
+   i: Integer;
+   GrayScale: Integer;
 begin
-  case num mod 10 of
-      0: Result := RGBToColor(255, 255, 255);
-      2: Result := RGBToColor(192, 192, 192);
-      4: Result := RGBToColor(128, 128, 128);
-      6: Result := RGBToColor(96, 96, 96);
-      8: Result := RGBToColor(32, 32, 32);
-      else Result := RGBToColor(0, 0, 0);
+  SetLength(Palette, ColorsSize);
+  for i := 0 to ColorsSize - 1 do
+    begin
+      GrayScale := Round((i / (ColorsSize - 1)) * 255);
+      Palette[i] := TColor(RGB(GrayScale, GrayScale, GrayScale));
+    end;
+end;
+
+function GetColorForNumber(num: Integer): TColor;
+var
+   index: Integer;
+begin
+  case DrawMethod of
+  'Линейный':
+    begin
+         index := (num mod ColorsSize) + ColorsSize ;
+         Result := Palette[index];
+    end;
+  'Хеширование':
+    begin
+      index := (num * 1103515245 + 12345) and $7FFFFFFF; // Простой линейный конгруэнтный генератор
+      Result := Palette[index mod ColorsSize];
+    end;
+  'Золотое сечение':
+    begin
+       index := Round(num * 0.6180339887 * ColorsSize) mod ColorsSize;
+       Result := Palette[index];
+    end;
   end;
 end;
 
 // Функция раскраски для HMM_DN
-function NumberToColor_DN(num: Integer): TColor;
+procedure GeneratePalette_DN();
+var
+   i, r, g, b: Integer;
+   t: Double;
 begin
-  case num mod 10 of
-      0: Result := RGBToColor(255,102, 102);
-      2: Result := RGBToColor(255,255, 102);
-      4: Result := RGBToColor(102,255, 102);
-      6: Result := RGBToColor(102,255, 255);
-      8: Result := RGBToColor(102,102, 255);
-      else Result := RGBToColor(255,102, 255);
+  SetLength(Palette, ColorsSize);
+  for i := 0 to ColorsSize - 1 do
+  begin
+    t := i / (ColorsSize - 1); // Нормализация в диапазоне [0..1]
+
+    // Градиент: красный (0) → зелёный (0.5) → синий (1)
+    if t < 0.5 then
+    begin
+      // Переход от красного к зелёному
+      r := Round(255 * (1 - 2 * t)); // Уменьшаем красный
+      g := Round(255 * (2 * t));     // Увеличиваем зелёный
+      b := 0;
+    end
+    else
+    begin
+      // Переход от зелёного к синему
+      r := 0;
+      g := Round(255 * (2 * (1 - t))); // Уменьшаем зелёный
+      b := Round(255 * (2 * t - 1));   // Увеличиваем синий
+    end;
+
+    Palette[i] := RGBToColor(r, g, b); // Заполняем палитру
   end;
 end;
 
-function NumberToColor(num: Integer): TColor;
+procedure GeneratePalette();
 begin
    case selectedHMM of
-       'HMM_N': Result := NumberToColor_N(num);
-       'HMM_DN': Result := NumberToColor_DN(num);
+       'HMM_N': GeneratePalette_N;
+       'HMM_DN': GeneratePalette_DN;
+
    end;
 end;
 
@@ -53,55 +100,6 @@ end;
 function IsEven(n: Integer): Boolean;
 begin
   Result := (n mod 2 = 0); // Проверяем, четное ли число
-end;
-
-procedure FillSpiralEvenNumbers(var A: array of array of Integer; N: Integer);
-var
-  left, right, top, bottom, i: Integer;
-  num: Integer;
-begin
-  left := 0;
-  right := N - 1;
-  top := 0;
-  bottom := N - 1;
-  num := 2; // Начинаем с первого чётного числа
-
-  while (left <= right) and (top <= bottom) do
-  begin
-    // Вправо
-    for i := left to right do
-    begin
-      A[top, i] := num;
-      num := num + 2;
-    end;
-    Inc(top);
-
-    // Вниз
-    for i := top to bottom do
-    begin
-      A[i, right] := num;
-      num := num + 2;
-    end;
-    Dec(right);
-
-    // Влево
-    if top <= bottom then
-      for i := right downto left do
-      begin
-        A[bottom, i] := num;
-        num := num + 2;
-      end;
-    Dec(bottom);
-
-    // Вверх
-    if left <= right then
-      for i := bottom downto top do
-      begin
-        A[i, left] := num;
-        num := num + 2;
-      end;
-    Inc(left);
-  end;
 end;
 
 end.

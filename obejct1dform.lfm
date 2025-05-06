@@ -35,7 +35,7 @@ object Form2: TForm2
     object LabeledEdit2: TLabeledEdit
       Left = 17
       Height = 33
-      Top = 112
+      Top = 200
       Width = 312
       EditLabel.Height = 25
       EditLabel.Width = 312
@@ -48,10 +48,43 @@ object Form2: TForm2
     object isShowValues: TCheckBox
       Left = 17
       Height = 29
-      Top = 176
+      Top = 320
       Width = 203
       Caption = 'Показывать значение'
       TabOrder = 2
+    end
+    object LabeledEdit1: TLabeledEdit
+      Left = 17
+      Height = 33
+      Top = 272
+      Width = 318
+      EditLabel.Height = 25
+      EditLabel.Width = 318
+      EditLabel.Caption = 'Количество цветов'
+      EditLabel.ParentFont = False
+      EditLabel.Font.Style = [fsBold]
+      NumbersOnly = True
+      TabOrder = 3
+      Text = 'LabeledEdit1'
+    end
+    object DrawMethodBox: TComboBox
+      Left = 16
+      Height = 33
+      Top = 128
+      Width = 318
+      ItemHeight = 25
+      TabOrder = 4
+      Text = 'DrawMethodBox'
+      OnChange = DrawMethodBoxChange
+    end
+    object Label3: TLabel
+      Left = 17
+      Height = 25
+      Top = 88
+      Width = 183
+      Caption = 'Метод окрашивания'
+      Font.Style = [fsBold]
+      ParentFont = False
     end
   end
   object Panel2: TPanel
@@ -155,17 +188,17 @@ object Form2: TForm2
       BorderSpacing.InnerBorder = 1
     end
     object Label1: TLabel
-      Left = 24
+      Left = 17
       Height = 25
       Top = 12
-      Width = 209
-      Caption = 'Хроматическая модель'
+      Width = 156
+      Caption = 'Цветовая модель'
       Font.Style = [fsBold]
       ParentFont = False
     end
   end
   object Label2: TLabel
-    Left = 24
+    Left = 16
     Height = 25
     Top = 88
     Width = 162

@@ -16,8 +16,11 @@ type
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
+    DrawMethodBox: TComboBox;
     isShowValues: TCheckBox;
     ComboBox1: TComboBox;
+    Label3: TLabel;
+    LabeledEdit1: TLabeledEdit;
     LabeledEdit2: TLabeledEdit;
     VisualizationType: TComboBox;
     Image1: TImage;
@@ -32,6 +35,7 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
+    procedure DrawMethodBoxChange(Sender: TObject);
     procedure ShowHHHType;
     procedure RenderSequenceHMM;
     procedure RenderSpiralHMM;
@@ -39,6 +43,7 @@ type
     procedure VisualizationTypeChange(Sender: TObject);
     procedure UpdateRender;
     procedure setGrid;
+    procedure ComputedTotalBlocks;
   private
 
   public
@@ -51,6 +56,8 @@ var
   SquareSize: Integer;
   Aspect: Double;
   RenderType: String;
+  Columns, Rows: Integer;
+  ScaledSquareSize: Integer;
 
 implementation
 
@@ -62,29 +69,26 @@ implementation
 procedure TForm2.ShowHHHType;
 var
   i, x, y: Integer;
-  size: Integer;
-  Num: Integer;
+  BlockWidth: Integer;
 begin
-  size := 50; // Размер квадрата
-  x := 10;
-  y := 10;
+  x := 0;
+  y := 0;
   Image2.Canvas.Font.Size := 9;
   Image2.Canvas.Font.Color := clWhite;
 
-  Image2.Canvas.Brush.Color := clMenu; // Новый цвет фона
+  Image2.Canvas.Brush.Color := clMenu;
   Image2.Canvas.FillRect(0, 0, Image2.Width, Image2.Height);
 
-  for i := 1 to 8 do
-  begin
-    Num := i * 2;
+  BlockWidth := Image2.Width div ColorsSize;
 
-    Image2.Canvas.Brush.Color := HMM1D_module.NumberToColor(Num);
-    Image2.Canvas.FillRect(x, y, x + size, y + size);
-    Image2.Canvas.TextOut(x + 10, y + 15, IntToStr(Num));
+  for i := 0 to ColorsSize - 1 do
+  begin
+    Image2.Canvas.Brush.Color := Palette[i];
+    Image2.Canvas.FillRect(x, y, x + BlockWidth, y + Image2.Height);
 
     // Смещаем координаты для следующего квадрата
-    x := x + size;
-    if x > Image2.Canvas.Width - size then
+    x := x + BlockWidth;
+    if x > Image2.Canvas.Width - BlockWidth then
     begin
       Break;
     end;
@@ -94,6 +98,11 @@ end;
 procedure TForm2.ComboBox1Change(Sender: TObject);
 begin
      selectedHMM := ComboBox1.Text;
+end;
+
+procedure TForm2.DrawMethodBoxChange(Sender: TObject);
+begin
+  DrawMethod := DrawMethodBox.Text;
 end;
 
 procedure TForm2.VisualizationTypeChange(Sender: TObject);
@@ -108,6 +117,17 @@ begin
   if RenderType = 'Спираль' then RenderSpiralHMM;
 end;
 
+procedure TForm2.ComputedTotalBlocks;
+begin
+   // Учитываем Aspect при расчете размера квадрата
+  ScaledSquareSize := Trunc(SquareSize * Aspect);
+
+  // Рассчитываем количество колонок и строк с учетом масштаба
+  Columns := Image1.Width div ScaledSquareSize;
+  Rows := Image1.Height div ScaledSquareSize;
+  TotalNumbers := Columns * Rows;
+end;
+
 procedure TForm2.BitBtn1Click(Sender: TObject);
 begin
   Close;
@@ -116,6 +136,13 @@ end;
 procedure TForm2.BitBtn2Click(Sender: TObject);
 begin
      Aspect := StrToFloat(LabeledEdit2.Text);
+     ColorsSize := StrToInt64(LabeledEdit1.Text);
+
+     Image1.Canvas.Clear;
+     Image1.Canvas.Font.Size := Trunc(10 * Aspect);
+     Image1.Canvas.Font.Color := clWhite;
+
+     GeneratePalette;
      UpdateRender;
 end;
 
@@ -124,31 +151,20 @@ procedure TForm2.RenderSequenceHMM;
 var
   i, x, y: Integer;
   Num: Integer;
-  Columns, Rows: Integer;
-  ScaledSquareSize: Integer;
 begin
   x := 0;
   y := 0;
-  Image1.Canvas.Font.Size := Trunc(10 * Aspect);
-  Image1.Canvas.Font.Color := clWhite;
 
   Image1.Canvas.Brush.Color := clMenu; // Новый цвет фона
   Image1.Canvas.FillRect(0, 0, Image1.Width, Image1.Height);
 
-  // Учитываем Aspect при расчете размера квадрата
-  ScaledSquareSize := Trunc(SquareSize * Aspect);
-
-  // Рассчитываем количество колонок и строк с учетом масштаба
-  Columns := Image1.Width div ScaledSquareSize;
-  Rows := Image1.Height div ScaledSquareSize;
-  TotalNumbers := Columns * Rows;
+  ComputedTotalBlocks;
 
   for i := 1 to TotalNumbers do
   begin
     Num := i * 2;
 
-    Image1.Canvas.Brush.Color := HMM1D_module.NumberToColor(Num);
-    //Image1.Canvas.FillRect(x, y, x + SquareSize, y + SquareSize);
+    Image1.Canvas.Brush.Color := HMM1D_module.GetColorForNumber(Num);
     Image1.Canvas.FillRect(x, y, x + ScaledSquareSize, y + ScaledSquareSize);
 
     if isShowValues.Checked then
@@ -168,12 +184,7 @@ end;
 procedure TForm2.RenderSpiralHMM;
 var
   x, y, dx, dy, steps, turn, num: Integer;
-  Columns, Rows: Integer;
-  ScaledSquareSize: Integer;
 begin
-  Image1.Canvas.Clear;
-  Image1.Canvas.Font.Size := Trunc(10 * Aspect);
-
   x := Image1.Canvas.Width div 2;  // центр формы
   y := Image1.Canvas.Height div 2;
   dx := 0; dy := -1;       // начальное направление (вверх)
@@ -183,13 +194,7 @@ begin
   Image1.Canvas.Brush.Color := clMenu; // Новый цвет фона
   Image1.Canvas.FillRect(0, 0, Image1.Width, Image1.Height);
 
-  // Учитываем Aspect при расчете размера квадрата
-  ScaledSquareSize := Trunc(SquareSize * Aspect);
-
-  // Рассчитываем количество колонок и строк с учетом масштаба
-  Columns := Image1.Width div ScaledSquareSize;
-  Rows := Image1.Height div ScaledSquareSize;
-  TotalNumbers := Columns * Rows;
+  ComputedTotalBlocks;
 
   while (num <= TotalNumbers) and (x > 0) and (x < Image1.Canvas.Width) and (y > 0) and (y < Image1.Canvas.Height) do
   begin
@@ -199,7 +204,7 @@ begin
     y := y + dy * ScaledSquareSize;  // шаг по y
 
     if (num mod 2 = 0) then begin
-       Image1.Canvas.Brush.Color := HMM1D_module.NumberToColor(Num);
+       Image1.Canvas.Brush.Color := HMM1D_module.GetColorForNumber(Num);
        Image1.Canvas.FillRect(x, y, x + ScaledSquareSize, y + ScaledSquareSize);
        if isShowValues.Checked then
           Image1.Canvas.TextOut(x, y, IntToStr(num));
@@ -252,18 +257,28 @@ begin
   ComboBox1.Items.Add('HMM_N');
   ComboBox1.Items.Add('HMM_DN');
   ComboBox1.ItemIndex := 0;
-  selectedHMM:=ComboBox1.Text;
+  selectedHMM := ComboBox1.Text;
 
   VisualizationType.Items.Clear;
   VisualizationType.Items.Add('Последовательная');
   VisualizationType.Items.Add('Спираль');
-  VisualizationType.Items.Add('Столбчатая');
   VisualizationType.ItemIndex := 0;
   RenderType:=VisualizationType.Text;
 
+  DrawMethodBox.Items.Clear;
+  DrawMethodBox.Items.Add('Линейный');
+  DrawMethodBox.Items.Add('Хеширование');
+  DrawMethodBox.Items.Add('Золотое сечение');
+  DrawMethodBox.ItemIndex := 0;
+  DrawMethod := DrawMethodBox.Text;
+
+  ColorsSize := 100;
   SquareSize := 50;
   Aspect := 1;
   LabeledEdit2.Text := Aspect.ToString;
+  LabeledEdit1.Text := ColorsSize.ToString;
+
+  GeneratePalette;
 
   UpdateRender;
 end;
