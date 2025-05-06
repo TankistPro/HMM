@@ -4,7 +4,7 @@ object Form2: TForm2
   Top = 225
   Width = 1240
   BorderStyle = bsToolWindow
-  Caption = 'Объкт 1D'
+  Caption = 'Объкт 1D (четные числа)'
   ClientHeight = 865
   ClientWidth = 1240
   DesignTimePPI = 144
@@ -32,42 +32,26 @@ object Form2: TForm2
       Text = 'VisualizationType'
       OnChange = VisualizationTypeChange
     end
-    object LabeledEdit1: TLabeledEdit
-      Left = 17
-      Height = 33
-      Top = 120
-      Width = 319
-      EditLabel.Height = 25
-      EditLabel.Width = 319
-      EditLabel.Caption = 'Количество чисел'
-      EditLabel.ParentFont = False
-      EditLabel.Font.Style = [fsBold]
-      NumbersOnly = True
-      ParentFont = False
-      TabOrder = 1
-      Text = '0'
-    end
     object LabeledEdit2: TLabeledEdit
       Left = 17
       Height = 33
-      Top = 192
+      Top = 112
       Width = 312
       EditLabel.Height = 25
       EditLabel.Width = 312
-      EditLabel.Caption = 'Рамер квадрата'
+      EditLabel.Caption = 'Aspect'
       EditLabel.ParentFont = False
       EditLabel.Font.Style = [fsBold]
-      NumbersOnly = True
-      TabOrder = 2
+      TabOrder = 1
       Text = 'LabeledEdit2'
     end
     object isShowValues: TCheckBox
       Left = 17
       Height = 29
-      Top = 256
+      Top = 176
       Width = 203
       Caption = 'Показывать значение'
-      TabOrder = 3
+      TabOrder = 2
     end
   end
   object Panel2: TPanel

@@ -18,7 +18,6 @@ type
     BitBtn3: TBitBtn;
     isShowValues: TCheckBox;
     ComboBox1: TComboBox;
-    LabeledEdit1: TLabeledEdit;
     LabeledEdit2: TLabeledEdit;
     VisualizationType: TComboBox;
     Image1: TImage;
@@ -50,6 +49,7 @@ var
   Form2: TForm2;
   TotalNumbers: Integer;
   SquareSize: Integer;
+  Aspect: Double;
   RenderType: String;
 
 implementation
@@ -106,7 +106,6 @@ begin
   ShowHHHType;
   if RenderType = 'Последовательная' then RenderSequenceHMM;
   if RenderType = 'Спираль' then RenderSpiralHMM;
-  //setGrid;
 end;
 
 procedure TForm2.BitBtn1Click(Sender: TObject);
@@ -116,8 +115,7 @@ end;
 
 procedure TForm2.BitBtn2Click(Sender: TObject);
 begin
-     TotalNumbers := StrToInt(LabeledEdit1.Text);
-     SquareSize := StrToInt(LabeledEdit2.Text);
+     Aspect := StrToFloat(LabeledEdit2.Text);
      UpdateRender;
 end;
 
@@ -126,31 +124,42 @@ procedure TForm2.RenderSequenceHMM;
 var
   i, x, y: Integer;
   Num: Integer;
+  Columns, Rows: Integer;
+  ScaledSquareSize: Integer;
 begin
   x := 0;
   y := 0;
-  Image1.Canvas.Font.Size := 8;
+  Image1.Canvas.Font.Size := Trunc(10 * Aspect);
   Image1.Canvas.Font.Color := clWhite;
 
   Image1.Canvas.Brush.Color := clMenu; // Новый цвет фона
   Image1.Canvas.FillRect(0, 0, Image1.Width, Image1.Height);
+
+  // Учитываем Aspect при расчете размера квадрата
+  ScaledSquareSize := Trunc(SquareSize * Aspect);
+
+  // Рассчитываем количество колонок и строк с учетом масштаба
+  Columns := Image1.Width div ScaledSquareSize;
+  Rows := Image1.Height div ScaledSquareSize;
+  TotalNumbers := Columns * Rows;
 
   for i := 1 to TotalNumbers do
   begin
     Num := i * 2;
 
     Image1.Canvas.Brush.Color := HMM1D_module.NumberToColor(Num);
-    Image1.Canvas.FillRect(x, y, x + SquareSize, y + SquareSize);
+    //Image1.Canvas.FillRect(x, y, x + SquareSize, y + SquareSize);
+    Image1.Canvas.FillRect(x, y, x + ScaledSquareSize, y + ScaledSquareSize);
 
     if isShowValues.Checked then
        Image1.Canvas.TextOut(x + 10, y + 15, IntToStr(Num));
 
     // Смещаем координаты для следующего квадрата
-    x := x + SquareSize;
-    if x > Image1.Canvas.Width - SquareSize then
+    x := x + ScaledSquareSize;
+    if x > Image1.Canvas.Width - ScaledSquareSize then
     begin
       x := 0;
-      y := y + SquareSize;
+      y := y + ScaledSquareSize;
     end;
   end;
 end;
@@ -159,9 +168,11 @@ end;
 procedure TForm2.RenderSpiralHMM;
 var
   x, y, dx, dy, steps, turn, num: Integer;
+  Columns, Rows: Integer;
+  ScaledSquareSize: Integer;
 begin
   Image1.Canvas.Clear;
-  Image1.Canvas.Font.Size := 8;
+  Image1.Canvas.Font.Size := Trunc(10 * Aspect);
 
   x := Image1.Canvas.Width div 2;  // центр формы
   y := Image1.Canvas.Height div 2;
@@ -172,16 +183,24 @@ begin
   Image1.Canvas.Brush.Color := clMenu; // Новый цвет фона
   Image1.Canvas.FillRect(0, 0, Image1.Width, Image1.Height);
 
+  // Учитываем Aspect при расчете размера квадрата
+  ScaledSquareSize := Trunc(SquareSize * Aspect);
+
+  // Рассчитываем количество колонок и строк с учетом масштаба
+  Columns := Image1.Width div ScaledSquareSize;
+  Rows := Image1.Height div ScaledSquareSize;
+  TotalNumbers := Columns * Rows;
+
   while (num <= TotalNumbers) and (x > 0) and (x < Image1.Canvas.Width) and (y > 0) and (y < Image1.Canvas.Height) do
   begin
     // Движение в текущем направлении
     Inc(steps);
-    x := x + dx * SquareSize;  // шаг по x
-    y := y + dy * SquareSize;  // шаг по y
+    x := x + dx * ScaledSquareSize;  // шаг по x
+    y := y + dy * ScaledSquareSize;  // шаг по y
 
     if (num mod 2 = 0) then begin
        Image1.Canvas.Brush.Color := HMM1D_module.NumberToColor(Num);
-       Image1.Canvas.FillRect(x, y, x + SquareSize, y + SquareSize);
+       Image1.Canvas.FillRect(x, y, x + ScaledSquareSize, y + ScaledSquareSize);
        if isShowValues.Checked then
           Image1.Canvas.TextOut(x, y, IntToStr(num));
     end;
@@ -242,11 +261,9 @@ begin
   VisualizationType.ItemIndex := 0;
   RenderType:=VisualizationType.Text;
 
-  TotalNumbers := 238;
   SquareSize := 50;
-
-  LabeledEdit1.Text := TotalNumbers.ToString;
-  LabeledEdit2.Text := SquareSize.ToString;
+  Aspect := 1;
+  LabeledEdit2.Text := Aspect.ToString;
 
   UpdateRender;
 end;
