@@ -12,7 +12,7 @@
         <WindowIndex Value="-1"/>
         <TopLine Value="-1"/>
         <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="44"/>
       </Unit>
       <Unit>
         <Filename Value="main.pas"/>
@@ -22,7 +22,7 @@
         <ResourceBaseClass Value="Form"/>
         <TopLine Value="38"/>
         <CursorPos X="13" Y="42"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -35,9 +35,9 @@
         <UnitName Value="Obejct1DForm"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="248"/>
-        <CursorPos X="14" Y="273"/>
-        <UsageCount Value="42"/>
+        <TopLine Value="119"/>
+        <CursorPos Y="138"/>
+        <UsageCount Value="43"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -46,8 +46,9 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="HMM1D_module"/>
         <EditorIndex Value="3"/>
-        <CursorPos X="17" Y="18"/>
-        <UsageCount Value="33"/>
+        <TopLine Value="26"/>
+        <CursorPos X="53" Y="63"/>
+        <UsageCount Value="34"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -57,8 +58,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="29" Y="21"/>
-        <UsageCount Value="29"/>
+        <TopLine Value="8"/>
+        <CursorPos X="25" Y="31"/>
+        <UsageCount Value="30"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -72,70 +74,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="21" Column="28"/>
-      </Position>
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="23" Column="15" TopLine="8"/>
-      </Position>
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="24" Column="23" TopLine="16"/>
-      </Position>
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="8" Column="30" TopLine="26"/>
-      </Position>
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="43" Column="42" TopLine="17"/>
-      </Position>
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="38" Column="23"/>
-      </Position>
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="42" Column="55" TopLine="19"/>
-      </Position>
-      <Position>
-        <Filename Value="obejct1dform.pas"/>
-        <Caret Line="71" Column="15" TopLine="63"/>
-      </Position>
-      <Position>
-        <Filename Value="obejct1dform.pas"/>
-        <Caret Line="94" Column="44" TopLine="65"/>
-      </Position>
-      <Position>
-        <Filename Value="obejct1dform.pas"/>
-        <Caret Line="269" Column="43" TopLine="239"/>
-      </Position>
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="38" Column="31"/>
-      </Position>
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="8" Column="32"/>
-      </Position>
-      <Position>
-        <Filename Value="obejct1dform.pas"/>
-        <Caret Line="137" Column="49" TopLine="117"/>
-      </Position>
-      <Position>
-        <Filename Value="obejct1dform.pas"/>
-        <Caret Line="85" Column="62" TopLine="66"/>
-      </Position>
-      <Position>
-        <Filename Value="obejct1dform.pas"/>
-        <Caret Line="159" Column="64" TopLine="129"/>
-      </Position>
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="39" Column="11" TopLine="27"/>
-      </Position>
       <Position>
         <Filename Value="data\lib\hmm1d_module.pas"/>
         <Caret Line="43" Column="42" TopLine="8"/>
@@ -159,10 +97,6 @@
       <Position>
         <Filename Value="data\lib\hmm1d_module.pas"/>
         <Caret Line="61" Column="12" TopLine="41"/>
-      </Position>
-      <Position>
-        <Filename Value="data\lib\hmm1d_module.pas"/>
-        <Caret Line="53" Column="29" TopLine="60"/>
       </Position>
       <Position>
         <Filename Value="data\lib\hmm1d_module.pas"/>
@@ -191,6 +125,74 @@
       <Position>
         <Filename Value="obejct1dform.pas"/>
         <Caret Line="266" Column="57" TopLine="241"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="21" Column="29"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="20" Column="29"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="19" Column="29"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="18" Column="29"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="17" Column="29"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="16" Column="29"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="18" Column="29"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="17" Column="43"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="38" Column="9" TopLine="5"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="37" Column="60" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="39" Column="7" TopLine="5"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="38" Column="29" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="37" Column="62" TopLine="6"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="33" Column="18" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="34" Column="18" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="33" Column="18" TopLine="7"/>
+      </Position>
+      <Position>
+        <Filename Value="about.pas"/>
+        <Caret Line="31" Column="25" TopLine="8"/>
       </Position>
     </JumpHistory>
     <RunParams>

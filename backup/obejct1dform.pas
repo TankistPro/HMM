@@ -270,7 +270,7 @@ begin
   DrawMethodBox.Items.Add('Хеширование');
   DrawMethodBox.Items.Add('Золотое сечение');
   DrawMethodBox.ItemIndex := 0;
-  DrawMethod:=DrawMethodBox.Text;
+  DrawMethod := DrawMethodBox.Text;
 
   ColorsSize := 100;
   SquareSize := 50;

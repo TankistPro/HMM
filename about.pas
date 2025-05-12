@@ -5,7 +5,8 @@ unit about;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, RTTICtrls,
+  Windows;
 
 type
 
@@ -13,11 +14,8 @@ type
 
   TForm3 = class(TForm)
     Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
+    Memo1: TMemo;
+    procedure FormCreate(Sender: TObject);
   private
 
   public
@@ -33,6 +31,16 @@ implementation
 
 { TForm3 }
 
+
+procedure TForm3.FormCreate(Sender: TObject);
+begin
+  if FileExists('./data/static/main_about.txt') then begin
+     Memo1.Lines.LoadFromFile('./data/static/main_about.txt');
+     HideCaret(Memo1.Handle);
+  end
+  else
+      ShowMessage('main_about.txt');
+end;
 
 end.
 
