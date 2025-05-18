@@ -1,7 +1,7 @@
 object Form2: TForm2
-  Left = 1232
+  Left = 1286
   Height = 865
-  Top = 377
+  Top = 228
   Width = 1240
   BorderStyle = bsToolWindow
   Caption = 'Объкт 1D (четные числа)'

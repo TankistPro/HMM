@@ -5,11 +5,12 @@ unit HMM1D_module;
 interface
 
 uses
-  Classes, SysUtils, Graphics, LCLIntf;
+  Classes, SysUtils, Graphics, LCLIntf, Math;
 
 procedure GeneratePalette;
 function IsEven(n: Integer): Boolean;
 function GetColorForNumber(num: Integer): TColor;
+function GetColor(A, X, Y: Real): TColor;
 
 var
    selectedHMM: String;
@@ -33,6 +34,21 @@ begin
     end;
 end;
 
+procedure GeneratePalette_Sin;
+var
+  i: Integer;
+  r, g, b: Byte;
+begin
+  SetLength(Palette, ColorsSize);
+  for i := 0 to ColorsSize-1 do
+  begin
+    r := Round(127 * Sin(i * 0.1) + 128);
+    g := Round(127 * Sin(i * 0.1 + 2) + 128);
+    b := Round(127 * Sin(i * 0.1 + 4) + 128);
+    Palette[i] := RGBToColor(r, g, b);
+  end;
+end;
+
 function GetColorForNumber(num: Integer): TColor;
 var
    index: Integer;
@@ -40,7 +56,7 @@ begin
   case DrawMethod of
   'Линейный':
     begin
-         index := (num mod ColorsSize) + ColorsSize ;
+         index := (num mod ColorsSize);
          Result := Palette[index];
     end;
   'Хеширование':
@@ -52,6 +68,11 @@ begin
     begin
        index := Round(num * 0.6180339887 * ColorsSize) mod ColorsSize;
        Result := Palette[index];
+    end;
+  '2D':
+    begin
+       index := (num mod ColorsSize);
+       Result := Palette[num];
     end;
   end;
 end;
@@ -92,8 +113,67 @@ begin
    case selectedHMM of
        'HMM_N': GeneratePalette_N;
        'HMM_DN': GeneratePalette_DN;
-
+       '2D': GeneratePalette_Sin;
    end;
+end;
+
+function Ker(n: Integer): Integer;
+var
+  sum: Integer;
+begin
+  n := Abs(n);
+  if n < 10 then
+    Result := n
+  else
+  begin
+    sum := 0;
+    while n > 0 do
+    begin
+      sum := sum + (n mod 10);
+      n := n div 10;
+    end;
+    Result := Ker(sum);
+  end;
+end;
+
+function InterpolateColor(Color1, Color2: TColor; t: Double): TColor;
+var
+  R1, G1, B1: Byte;
+  R2, G2, B2: Byte;
+  R, G, B: Byte;
+begin
+  R1 := GetRValue(Color1);
+  G1 := GetGValue(Color1);
+  B1 := GetBValue(Color1);
+
+  R2 := GetRValue(Color2);
+  G2 := GetGValue(Color2);
+  B2 := GetBValue(Color2);
+
+  R := Round(R1 + t * (R2 - R1));
+  G := Round(G1 + t * (G2 - G1));
+  B := Round(B1 + t * (B2 - B1));
+
+  Result := RGBToColor(R, G, B);
+end;
+
+function GetColor(A, X, Y: Real): TColor;
+var
+  Value: Integer;
+  t: Double;
+const
+  ColorStart: TColor = clRed;   // Начальный цвет
+  ColorEnd: TColor = clGreen;   // Конечный цвет
+begin
+  //R := GetColorComponent(A, X, Y, Percent);
+  //G := GetColorComponent(A, X + 100, Y + 50, Percent); // сдвиг координат для G
+  //B := GetColorComponent(A, X + 200, Y + 100, Percent); // сдвиг координат для B
+  //Result := RGBToColor(R, G, B);
+
+  Value := Ker(Round(Abs(A * Sin(X * 0.25 + Y * 0.55))));
+  // Value от 1 до 9, нормируем в диапазон [0..1]
+  t := (Value - 1) / 8; // 0 при Value=1, 1 при Value=9
+  Result := InterpolateColor(ColorStart, ColorEnd, t);
 end;
 
 // Является ли число четным

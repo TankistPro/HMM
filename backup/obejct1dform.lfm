@@ -1,7 +1,7 @@
 object Form2: TForm2
-  Left = 972
+  Left = 1286
   Height = 865
-  Top = 225
+  Top = 228
   Width = 1240
   BorderStyle = bsToolWindow
   Caption = 'Объкт 1D (четные числа)'
@@ -205,5 +205,9 @@ object Form2: TForm2
     Caption = 'Тип визуализации'
     Font.Style = [fsBold]
     ParentFont = False
+  end
+  object IntervalChartSource1: TIntervalChartSource
+    Left = 752
+    Top = 400
   end
 end

@@ -5,8 +5,8 @@ unit Obejct1DForm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Dialogs, StdCtrls,Graphics, ExtCtrls, Buttons,
-  HMM1D_module;
+  Classes, SysUtils, Forms, Controls, Dialogs, StdCtrls, Graphics, ExtCtrls,
+  Buttons, TAIntervalSources, HMM1D_module;
 
 type
 

@@ -5,8 +5,8 @@ unit Obejct1DForm;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Dialogs, StdCtrls,Graphics, ExtCtrls, Buttons,
-  HMM1D_module;
+  Classes, SysUtils, Forms, Controls, Dialogs, StdCtrls, Graphics, ExtCtrls,
+  Buttons, TAIntervalSources, HMM1D_module;
 
 type
 
@@ -17,6 +17,7 @@ type
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
     DrawMethodBox: TComboBox;
+    IntervalChartSource1: TIntervalChartSource;
     isShowValues: TCheckBox;
     ComboBox1: TComboBox;
     Label3: TLabel;

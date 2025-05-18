@@ -26,6 +26,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="TAChartLazarusPkg"/>
+      </Item>
+      <Item>
         <PackageName Value="RunTimeTypeInfoControls"/>
       </Item>
       <Item>
@@ -63,6 +66,14 @@
         <ComponentName Value="Form3"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+      </Unit>
+      <Unit>
+        <Filename Value="object2dform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form4"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="object2dForm"/>
       </Unit>
     </Units>
   </ProjectOptions>

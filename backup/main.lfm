@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 1055
+  Left = 1103
   Height = 900
-  Top = 469
+  Top = 730
   Width = 1400
   Caption = 'Четные числа'
   ClientHeight = 900
@@ -3634,12 +3634,13 @@ object Form1: TForm1
       end
       object MenuItem8: TMenuItem
         Caption = 'Зависимость 2D'
+        OnClick = MenuItem8Click
       end
     end
     object MenuItem3: TMenuItem
       Caption = 'Справка'
       object MenuItem9: TMenuItem
-        Caption = 'Содержание'
+        Caption = 'Справка'
         OnClick = MenuItem9Click
       end
       object MenuItem10: TMenuItem
