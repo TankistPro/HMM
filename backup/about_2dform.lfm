@@ -31,7 +31,7 @@ object Form6: TForm6
     Top = 88
     Width = 1160
     Align = alCustom
-    Anchors = [akTop, akLeft, akRight]
+    Anchors = [akTop, akLeft, akRight, akBottom]
     BorderStyle = bsNone
     Color = clMenu
     Font.Height = -24

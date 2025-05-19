@@ -33,6 +33,7 @@ type
     xMaxValue: TLabeledEdit;
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
+    procedure ComboBox1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DrawPoints();
     procedure RenderAxes;
@@ -42,6 +43,7 @@ type
     function LogicalYToPixel(Y: Double): Integer;
     procedure xMaxValueKeyPress(Sender: TObject; var Key: char);
     procedure xMinValueKeyPress(Sender: TObject; var Key: char);
+    procedure yMaxValueKeyPress(Sender: TObject; var Key: char);
     procedure yMinValueKeyPress(Sender: TObject; var Key: char);
   private
     Aspect: TPoint;
@@ -64,6 +66,7 @@ implementation
 
 procedure TForm4.FormCreate(Sender: TObject);
 begin
+  ColorsSize := 10;
   Aspect.X := 6;
   Aspect.Y := 6;
   LabeledEdit2.Text := Aspect.X.ToString;
@@ -82,8 +85,8 @@ begin
   yMaxValue.Text := yMax.ToString;
 
   ComboBox1.Items.Clear;
-  ComboBox1.Items.Add('HMM_N');
-  ComboBox1.Items.Add('HMM_DN');
+  ComboBox1.Items.Add('HMM_N_2D');
+  ComboBox1.Items.Add('HMM_DN_2D');
   ComboBox1.ItemIndex := 0;
   selectedHMM := ComboBox1.Text;
 
@@ -113,7 +116,7 @@ begin
 
   BlockWidth := Image2.Width div ColorsSize;
 
-  for i := 0 to ColorsSize - 1 do
+  for i := 1 to ColorsSize - 1 do
   begin
     Image2.Canvas.Brush.Color := Palette[i];
     Image2.Canvas.FillRect(x, y, x + BlockWidth, y + Image2.Height);
@@ -212,7 +215,7 @@ begin
     YPos := LogicalYToPixel(y);
     Image1.Canvas.MoveTo(XPos - 5, YPos);
     Image1.Canvas.LineTo(XPos + 5, YPos);
-    Image1.Canvas.TextOut(XPos - 40, YPos - 7, Format('%.2f', [y]));
+    Image1.Canvas.TextOut(XPos - 40, YPos - 7, Format('%.1f', [y]));
     y := y + labelStepY;
   end;
 end;
@@ -240,6 +243,14 @@ begin
     AboutForm.Show;
 end;
 
+procedure TForm4.ComboBox1Change(Sender: TObject);
+begin
+  if selectedHMM = 'HMM_N_2D' then ColorsSize := 100;
+  if selectedHMM = 'HMM_DN_2D' then ColorsSize := 10;
+
+  selectedHMM := ComboBox1.Text;
+end;
+
 function TForm4.LogicalXToPixel(X: Double): Integer;
 begin
   Result := Round((X - xMin) / (xMax - xMin) * Image1.Width);
@@ -248,7 +259,6 @@ end;
 function TForm4.LogicalYToPixel(Y: Double): Integer;
 begin
   Result := Round(Image1.Height - (Y - yMin) / (yMax - yMin) * Image1.Height);
-  //Result := Round((Y - yMin) / (yMax - yMin) * Image1.Height);
 end;
 
 procedure TForm4.xMaxValueKeyPress(Sender: TObject; var Key: char);
@@ -261,6 +271,15 @@ begin
 end;
 
 procedure TForm4.xMinValueKeyPress(Sender: TObject; var Key: char);
+var
+  Edit: TEdit;
+begin
+  Edit := TEdit(Sender);
+  if not IsValidNumberKeyPress(Edit.Text, Key) then
+    Key := #0;  // Запретить ввод
+end;
+
+procedure TForm4.yMaxValueKeyPress(Sender: TObject; var Key: char);
 var
   Edit: TEdit;
 begin

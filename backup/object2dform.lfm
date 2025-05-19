@@ -30,6 +30,7 @@ object Form4: TForm4
       ReadOnly = True
       TabOrder = 0
       Text = 'ComboBox1'
+      OnChange = ComboBox1Change
     end
     object Image2: TImage
       Left = 360
@@ -182,6 +183,7 @@ object Form4: TForm4
     EditLabel.ParentFont = False
     EditLabel.Font.Style = [fsBold]
     TabOrder = 6
+    OnKeyPress = yMaxValueKeyPress
   end
   object yMinValue: TLabeledEdit
     Left = 17

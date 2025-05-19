@@ -12,12 +12,18 @@ function IsEven(n: Integer): Boolean;
 function GetColorForNumber(num: Integer): TColor;
 function GetColor(A, X, Y: Real): TColor;
 function IsValidNumberKeyPress(const CurrentText: string; Key: Char): Boolean;
+function InterpolateColor(Color1, Color2: TColor; t: Double): TColor;
+function GetColorFor2D(A, X, Y: Real): TColor;
 
 var
    selectedHMM: String;
    Palette: array of TColor;
    ColorsSize: Integer;
    DrawMethod: String;
+
+const
+  ColorStart: TColor = clRed;   // Начальный цвет
+  ColorEnd: TColor = clGreen;   // Конечный цвет
 
 implementation
 
@@ -47,6 +53,19 @@ begin
     g := Round(127 * Sin(i * 0.1 + 2) + 128);
     b := Round(127 * Sin(i * 0.1 + 4) + 128);
     Palette[i] := RGBToColor(r, g, b);
+  end;
+end;
+
+procedure GeneratePalette_N_2D;
+var
+  i: Integer;
+  t: Double;
+begin
+  SetLength(Palette, ColorsSize);
+  for i := 1 to ColorsSize-1 do
+  begin
+    t := (i - 1) / 8;
+    Palette[i] := InterpolateColor(ColorStart, ColorEnd, t);
   end;
 end;
 
@@ -114,7 +133,8 @@ begin
    case selectedHMM of
        'HMM_N': GeneratePalette_N;
        'HMM_DN': GeneratePalette_DN;
-       '2D': GeneratePalette_Sin;
+       'HMM_N_2D': GeneratePalette_N_2D;
+       'HMM_DN_2D': GeneratePalette_Sin;
    end;
 end;
 
@@ -158,18 +178,25 @@ begin
   Result := RGBToColor(R, G, B);
 end;
 
+function GetColorFor2D(A, X, Y: Real): TColor;
+var
+  Value, scaled: Integer;
+  index: Integer;
+begin
+  if selectedHMM = 'HMM_N_2D' then Result := GetColor(A, X, Y);
+  if selectedHMM = 'HMM_DN_2D' then begin
+    Value := Ker(Round(Abs(A * Sin(X * 0.1 + Y * 0.55))));
+    scaled := (Value * 100) div 9;
+    index := (scaled mod ColorsSize);
+    Result := Palette[index];
+  end;
+end;
+
 function GetColor(A, X, Y: Real): TColor;
 var
   Value: Integer;
   t: Double;
-const
-  ColorStart: TColor = clRed;   // Начальный цвет
-  ColorEnd: TColor = clGreen;   // Конечный цвет
 begin
-  //R := GetColorComponent(A, X, Y, Percent);
-  //G := GetColorComponent(A, X + 100, Y + 50, Percent); // сдвиг координат для G
-  //B := GetColorComponent(A, X + 200, Y + 100, Percent); // сдвиг координат для B
-  //Result := RGBToColor(R, G, B);
 
   Value := Ker(Round(Abs(A * Sin(X * 0.1 + Y * 0.55))));
   // Value от 1 до 9, нормируем в диапазон [0..1]
