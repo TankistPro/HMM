@@ -34,6 +34,13 @@
 
 <img width="620" alt="image" src="https://github.com/user-attachments/assets/946c1099-e628-4f98-bebb-54e1fd1c242b" />
 
+## Обект 2D
+
+Хромоматематическое моделирование для формулы Z = Ker(A *SIN(x + y)), где Ker - ядро числа a, т. е. рекурсивная сумма цифр.
+
+<img width="624" alt="image" src="https://github.com/user-attachments/assets/c9596d7f-f1fc-4b79-b532-b491d55f2bda" />
+
+
 
 
 
