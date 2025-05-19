@@ -66,7 +66,6 @@ implementation
 
 procedure TForm4.FormCreate(Sender: TObject);
 begin
-  ColorsSize := 10;
   Aspect.X := 6;
   Aspect.Y := 6;
   LabeledEdit2.Text := Aspect.X.ToString;
@@ -149,7 +148,7 @@ begin
     x := xMin;
     while x <= xMax do
     begin
-      Image1.Canvas.Brush.Color := HMM1D_module.GetColor(Ar, Round(x), Round(y));
+      Image1.Canvas.Brush.Color := HMM1D_module.GetColorFor2D(Ar, Round(x), Round(y));
       XCoord := LogicalXToPixel(x);
       YCoord := LogicalYToPixel(y);
       Image1.Canvas.Ellipse(XCoord - 4, YCoord - 4, XCoord + 4, YCoord + 4);
@@ -245,9 +244,6 @@ end;
 
 procedure TForm4.ComboBox1Change(Sender: TObject);
 begin
-  if selectedHMM = 'HMM_N_2D' then ColorsSize := 100;
-  if selectedHMM = 'HMM_DN_2D' then ColorsSize := 10;
-
   selectedHMM := ComboBox1.Text;
 end;
 

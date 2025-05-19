@@ -66,7 +66,6 @@ implementation
 
 procedure TForm4.FormCreate(Sender: TObject);
 begin
-  ColorsSize := 10;
   Aspect.X := 6;
   Aspect.Y := 6;
   LabeledEdit2.Text := Aspect.X.ToString;
@@ -95,6 +94,9 @@ end;
 
 procedure TForm4.UpdateRender;
 begin
+  if selectedHMM = 'HMM_N_2D' then ColorsSize := 10;
+  if selectedHMM = 'HMM_DN_2D' then ColorsSize := 100;
+
   GeneratePalette;
   ShowHHHType;
   DrawPoints();
@@ -245,9 +247,6 @@ end;
 
 procedure TForm4.ComboBox1Change(Sender: TObject);
 begin
-  if selectedHMM = 'HMM_N_2D' then ColorsSize := 100;
-  if selectedHMM = 'HMM_DN_2D' then ColorsSize := 10;
-
   selectedHMM := ComboBox1.Text;
 end;
 

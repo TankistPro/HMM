@@ -42,9 +42,9 @@
         <Filename Value="data\lib\hmm1d_module.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="HMM1D_module"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
-        <CursorPos X="37" Y="16"/>
+        <TopLine Value="167"/>
+        <CursorPos X="43" Y="196"/>
         <FoldState Value=" T3jE0Sm"/>
         <UsageCount Value="53"/>
         <Loaded Value="True"/>
@@ -69,10 +69,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="object2dForm"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="165"/>
-        <CursorPos X="53" Y="248"/>
-        <FoldState Value=" T3kZ0uO"/>
+        <TopLine Value="52"/>
+        <CursorPos X="6" Y="68"/>
+        <FoldState Value=" T3kY0uH"/>
         <UsageCount Value="39"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
