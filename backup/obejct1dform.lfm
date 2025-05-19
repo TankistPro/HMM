@@ -1,23 +1,23 @@
 object Form2: TForm2
-  Left = 1286
-  Height = 865
-  Top = 228
+  Left = 1035
+  Height = 853
+  Top = 177
   Width = 1240
   BorderStyle = bsToolWindow
   Caption = 'Объкт 1D (четные числа)'
-  ClientHeight = 865
+  ClientHeight = 853
   ClientWidth = 1240
   DesignTimePPI = 144
   OnCreate = FormCreate
+  Position = poDesktopCenter
   LCLVersion = '3.8.0.0'
   object Panel1: TPanel
     Left = 0
-    Height = 726
+    Height = 714
     Top = 80
     Width = 350
     Align = alLeft
-    Caption = 'Panel1'
-    ClientHeight = 726
+    ClientHeight = 714
     ClientWidth = 350
     Constraints.MinWidth = 350
     ParentFont = False
@@ -89,12 +89,11 @@ object Form2: TForm2
   end
   object Panel2: TPanel
     Left = 358
-    Height = 726
+    Height = 714
     Top = 80
     Width = 882
     Align = alClient
-    Caption = 'Panel2'
-    ClientHeight = 726
+    ClientHeight = 714
     ClientWidth = 882
     Color = clScrollBar
     ParentBackground = False
@@ -102,7 +101,7 @@ object Form2: TForm2
     TabOrder = 1
     object Image1: TImage
       Left = 1
-      Height = 724
+      Height = 712
       Top = 1
       Width = 880
       Align = alClient
@@ -113,10 +112,9 @@ object Form2: TForm2
   object Panel3: TPanel
     Left = 0
     Height = 59
-    Top = 806
+    Top = 794
     Width = 1240
     Align = alBottom
-    Caption = 'Panel3'
     ClientHeight = 59
     ClientWidth = 1240
     TabOrder = 2
@@ -149,12 +147,13 @@ object Form2: TForm2
       Width = 140
       DefaultCaption = True
       Kind = bkHelp
+      OnClick = BitBtn3Click
       TabOrder = 2
     end
   end
   object Splitter1: TSplitter
     Left = 350
-    Height = 726
+    Height = 714
     Top = 80
     Width = 8
   end
@@ -164,7 +163,6 @@ object Form2: TForm2
     Top = 0
     Width = 1240
     Align = alTop
-    Caption = 'Panel4'
     ClientHeight = 80
     ClientWidth = 1240
     TabOrder = 4
@@ -205,9 +203,5 @@ object Form2: TForm2
     Caption = 'Тип визуализации'
     Font.Style = [fsBold]
     ParentFont = False
-  end
-  object IntervalChartSource1: TIntervalChartSource
-    Left = 752
-    Top = 400
   end
 end

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Dialogs, StdCtrls,Graphics, ExtCtrls, Buttons,
-  Math, HMM1D_module;
+  Math, HMM1D_module, about_2dform;
 
 type
 
@@ -22,6 +22,7 @@ type
     Label1: TLabel;
     LabeledEdit2: TLabeledEdit;
     ARatio: TLabeledEdit;
+    StaticText1: TStaticText;
     yMinValue: TLabeledEdit;
     yMaxValue: TLabeledEdit;
     xMinValue: TLabeledEdit;
@@ -31,6 +32,7 @@ type
     Panel4: TPanel;
     xMaxValue: TLabeledEdit;
     procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure DrawPoints();
     procedure RenderAxes;
@@ -49,6 +51,7 @@ type
 
 var
   Form4: TForm4;
+  AboutForm: TForm6;
 
 implementation
 
@@ -58,8 +61,8 @@ implementation
 
 procedure TForm4.FormCreate(Sender: TObject);
 begin
-  Aspect.X := 7;
-  Aspect.Y := 7;
+  Aspect.X := 6;
+  Aspect.Y := 6;
   LabeledEdit2.Text := Aspect.X.ToString;
 
   Ar := 9.37;
@@ -224,6 +227,13 @@ begin
   yMax := StrToFloat(yMaxValue.Text);
 
   UpdateRender;
+end;
+
+procedure TForm4.BitBtn3Click(Sender: TObject);
+begin
+  if not Assigned(AboutForm) then
+        AboutForm := TForm6.Create(Application);
+    AboutForm.Show;
 end;
 
 function TForm4.LogicalXToPixel(X: Double): Integer;

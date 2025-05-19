@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Dialogs, StdCtrls, Graphics, ExtCtrls,
-  Buttons, TAIntervalSources, HMM1D_module;
+  Buttons, TAIntervalSources, HMM1D_module, abot_1dform;
 
 type
 
@@ -17,7 +17,6 @@ type
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
     DrawMethodBox: TComboBox;
-    IntervalChartSource1: TIntervalChartSource;
     isShowValues: TCheckBox;
     ComboBox1: TComboBox;
     Label3: TLabel;
@@ -35,6 +34,7 @@ type
     Splitter1: TSplitter;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure BitBtn3Click(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure DrawMethodBoxChange(Sender: TObject);
     procedure ShowHHHType;
@@ -53,6 +53,7 @@ type
 
 var
   Form2: TForm2;
+  AdboutFrom: TForm5;
   TotalNumbers: Integer;
   SquareSize: Integer;
   Aspect: Double;
@@ -145,6 +146,13 @@ begin
 
      GeneratePalette;
      UpdateRender;
+end;
+
+procedure TForm2.BitBtn3Click(Sender: TObject);
+begin
+  if not Assigned(AdboutFrom) then
+      AdboutFrom := TForm5.Create(Application);
+  AdboutFrom.Show;
 end;
 
 // Процедура отрисовки "Последовательной HMM"

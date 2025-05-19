@@ -5,14 +5,15 @@ unit about;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, RTTICtrls,
-  Windows;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  Buttons, RTTICtrls, Windows;
 
 type
 
   { TForm3 }
 
   TForm3 = class(TForm)
+    BitBtn1: TBitBtn;
     Label1: TLabel;
     Memo1: TMemo;
     procedure FormCreate(Sender: TObject);

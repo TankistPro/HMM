@@ -1,34 +1,35 @@
 object Form3: TForm3
-  Left = 1651
-  Height = 293
-  Top = 341
-  Width = 539
-  BorderStyle = bsSingle
-  Caption = 'Справка'
-  ClientHeight = 293
-  ClientWidth = 539
+  Left = 1855
+  Height = 342
+  Top = 287
+  Width = 643
+  BorderStyle = bsToolWindow
+  Caption = 'Справка о программе'
+  ClientHeight = 342
+  ClientWidth = 643
   DesignTimePPI = 144
   OnCreate = FormCreate
+  Position = poDesktopCenter
   LCLVersion = '3.8.0.0'
   object Label1: TLabel
-    Left = 0
-    Height = 120
-    Top = 0
-    Width = 539
-    Align = alTop
+    Left = 192
+    Height = 60
+    Top = 8
+    Width = 287
+    Align = alCustom
     Alignment = taCenter
-    Caption = 'Справка программы HMM'
+    Caption = 'О программе'
     Font.Height = -44
     Font.Style = [fsBold]
     ParentFont = False
     WordWrap = True
   end
   object Memo1: TMemo
-    Left = 0
-    Height = 173
-    Top = 120
-    Width = 539
-    Align = alClient
+    Left = 32
+    Height = 176
+    Top = 88
+    Width = 584
+    Align = alCustom
     Alignment = taCenter
     BorderStyle = bsNone
     Color = clMenu
@@ -42,5 +43,15 @@ object Form3: TForm3
     TabOrder = 0
     TabStop = False
     WantReturns = False
+  end
+  object BitBtn1: TBitBtn
+    Left = 480
+    Height = 53
+    Top = 272
+    Width = 145
+    Caption = 'Закрыть'
+    Kind = bkClose
+    ModalResult = 11
+    TabOrder = 1
   end
 end

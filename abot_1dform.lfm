@@ -1,0 +1,55 @@
+object Form5: TForm5
+  Left = 953
+  Height = 943
+  Top = 229
+  Width = 1231
+  BorderStyle = bsToolWindow
+  Caption = 'Справочная информация'
+  ClientHeight = 0
+  ClientWidth = 0
+  DesignTimePPI = 144
+  OnCreate = FormCreate
+  Position = poDesktopCenter
+  LCLVersion = '3.8.0.0'
+  object Label1: TLabel
+    Left = 144
+    Height = 60
+    Top = 8
+    Width = 907
+    Align = alCustom
+    Caption = 'Справка по моделированию 1D объектов'
+    Font.Height = -44
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Memo1: TMemo
+    Left = 33
+    Height = 768
+    Top = 88
+    Width = 1160
+    Align = alCustom
+    BorderStyle = bsNone
+    Color = clMenu
+    Font.Height = -24
+    Lines.Strings = (
+      'Memo1'
+    )
+    ParentBidiMode = False
+    ParentFont = False
+    ReadOnly = True
+    ScrollBars = ssAutoVertical
+    TabOrder = 0
+    TabStop = False
+    WantReturns = False
+  end
+  object BitBtn1: TBitBtn
+    Left = 1064
+    Height = 53
+    Top = 872
+    Width = 145
+    Caption = 'Закрыть'
+    Kind = bkClose
+    ModalResult = 11
+    TabOrder = 1
+  end
+end

@@ -75,6 +75,12 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="object2dForm"/>
       </Unit>
+      <Unit>
+        <Filename Value="abot_1dform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form5"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

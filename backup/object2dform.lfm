@@ -5,10 +5,11 @@ object Form4: TForm4
   Width = 1240
   BorderStyle = bsToolWindow
   Caption = 'Объект 2D'
-  ClientHeight = 865
-  ClientWidth = 1240
+  ClientHeight = 0
+  ClientWidth = 0
   DesignTimePPI = 144
   OnCreate = FormCreate
+  Position = poDesktopCenter
   LCLVersion = '3.8.0.0'
   object Panel4: TPanel
     Left = 0
@@ -16,7 +17,6 @@ object Form4: TForm4
     Top = 0
     Width = 1240
     Align = alTop
-    Caption = 'Panel4'
     ClientHeight = 80
     ClientWidth = 1240
     TabOrder = 0
@@ -54,7 +54,6 @@ object Form4: TForm4
     Top = 806
     Width = 1240
     Align = alBottom
-    Caption = 'Panel3'
     ClientHeight = 59
     ClientWidth = 1240
     TabOrder = 1
@@ -84,9 +83,21 @@ object Form4: TForm4
       Height = 45
       Top = 8
       Width = 140
-      DefaultCaption = True
+      Caption = 'Справка'
       Kind = bkHelp
+      OnClick = BitBtn3Click
       TabOrder = 2
+    end
+    object StaticText1: TStaticText
+      Left = 16
+      Height = 40
+      Top = 8
+      Width = 296
+      Caption = 'Z = Ker(A * sin(X + Y))'
+      Font.Height = -28
+      Font.Style = [fsUnderline]
+      ParentFont = False
+      TabOrder = 3
     end
   end
   object Panel1: TPanel
@@ -95,7 +106,6 @@ object Form4: TForm4
     Top = 80
     Width = 350
     Align = alLeft
-    Caption = 'Panel1'
     ClientHeight = 726
     ClientWidth = 350
     Constraints.MinWidth = 350
