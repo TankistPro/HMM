@@ -1,7 +1,7 @@
 object Form2: TForm2
-  Left = 1035
+  Left = 667
   Height = 853
-  Top = 177
+  Top = 134
   Width = 1240
   BorderStyle = bsToolWindow
   Caption = 'Объкт 1D (четные числа)'
@@ -145,7 +145,7 @@ object Form2: TForm2
       Height = 45
       Top = 8
       Width = 140
-      DefaultCaption = True
+      Caption = 'Справка'
       Kind = bkHelp
       OnClick = BitBtn3Click
       TabOrder = 2

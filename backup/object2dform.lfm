@@ -1,12 +1,12 @@
 object Form4: TForm4
-  Left = 1298
+  Left = 1232
   Height = 865
-  Top = 149
+  Top = 245
   Width = 1240
   BorderStyle = bsToolWindow
   Caption = 'Объект 2D'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 865
+  ClientWidth = 1240
   DesignTimePPI = 144
   OnCreate = FormCreate
   Position = poDesktopCenter
@@ -156,6 +156,7 @@ object Form4: TForm4
     EditLabel.ParentFont = False
     EditLabel.Font.Style = [fsBold]
     TabOrder = 4
+    OnKeyPress = xMinValueKeyPress
   end
   object xMaxValue: TLabeledEdit
     Left = 17
@@ -168,6 +169,7 @@ object Form4: TForm4
     EditLabel.ParentFont = False
     EditLabel.Font.Style = [fsBold]
     TabOrder = 5
+    OnKeyPress = xMaxValueKeyPress
   end
   object yMaxValue: TLabeledEdit
     Left = 17
@@ -192,6 +194,7 @@ object Form4: TForm4
     EditLabel.ParentFont = False
     EditLabel.Font.Style = [fsBold]
     TabOrder = 7
+    OnKeyPress = yMinValueKeyPress
   end
   object ARatio: TLabeledEdit
     Left = 17

@@ -1,7 +1,7 @@
 object Form6: TForm6
-  Left = 952
+  Left = 364
   Height = 806
-  Top = 396
+  Top = 128
   Width = 1236
   BorderStyle = bsToolWindow
   Caption = 'Справочная информация'
@@ -24,11 +24,14 @@ object Form6: TForm6
     OnClick = Label1Click
   end
   object Memo1: TMemo
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideRight.Side = asrCenter
     Left = 33
     Height = 640
     Top = 88
     Width = 1160
     Align = alCustom
+    Anchors = [akTop, akLeft, akRight, akBottom]
     BorderStyle = bsNone
     Color = clMenu
     Font.Height = -24

@@ -35,7 +35,6 @@ procedure TForm5.FormCreate(Sender: TObject);
 begin
   if FileExists('./data/static/1D_info.txt') then begin
      Memo1.Lines.LoadFromFile('./data/static/1D_info.txt');
-     // HideCaret(Memo1.Handle);
   end
   else
       ShowMessage('1D_info.txt');

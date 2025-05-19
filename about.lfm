@@ -1,23 +1,26 @@
 object Form3: TForm3
-  Left = 1855
+  Left = 750
   Height = 342
-  Top = 287
+  Top = 259
   Width = 643
   BorderStyle = bsToolWindow
   Caption = 'Справка о программе'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 342
+  ClientWidth = 643
   DesignTimePPI = 144
   OnCreate = FormCreate
   Position = poDesktopCenter
   LCLVersion = '3.8.0.0'
   object Label1: TLabel
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideRight.Side = asrCenter
     Left = 192
     Height = 60
     Top = 8
     Width = 287
     Align = alCustom
     Alignment = taCenter
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'О программе'
     Font.Height = -44
     Font.Style = [fsBold]
@@ -25,12 +28,16 @@ object Form3: TForm3
     WordWrap = True
   end
   object Memo1: TMemo
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideRight.Side = asrCenter
+    AnchorSideBottom.Side = asrCenter
     Left = 32
     Height = 176
     Top = 88
     Width = 584
     Align = alCustom
     Alignment = taCenter
+    Anchors = [akTop, akLeft, akRight, akBottom]
     BorderStyle = bsNone
     Color = clMenu
     Font.Height = -24

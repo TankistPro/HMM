@@ -1,11 +1,11 @@
 object Form6: TForm6
-  Left = 952
-  Height = 937
-  Top = 396
+  Left = 364
+  Height = 806
+  Top = 128
   Width = 1236
   BorderStyle = bsToolWindow
   Caption = 'Справочная информация'
-  ClientHeight = 937
+  ClientHeight = 806
   ClientWidth = 1236
   DesignTimePPI = 144
   OnCreate = FormCreate
@@ -24,11 +24,14 @@ object Form6: TForm6
     OnClick = Label1Click
   end
   object Memo1: TMemo
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideRight.Side = asrCenter
     Left = 33
-    Height = 768
+    Height = 640
     Top = 88
     Width = 1160
     Align = alCustom
+    Anchors = [akTop, akLeft, akRight]
     BorderStyle = bsNone
     Color = clMenu
     Font.Height = -24
@@ -44,9 +47,9 @@ object Form6: TForm6
     WantReturns = False
   end
   object BitBtn1: TBitBtn
-    Left = 1064
+    Left = 1072
     Height = 53
-    Top = 872
+    Top = 744
     Width = 145
     Caption = 'Закрыть'
     Kind = bkClose

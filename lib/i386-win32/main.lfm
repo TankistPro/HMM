@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 1051
+  Left = 507
   Height = 900
-  Top = 224
+  Top = 151
   Width = 1400
   Caption = 'Четные числа'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 900
+  ClientWidth = 1400
   Color = clWindow
   DesignTimePPI = 144
   Menu = MainMenu1
@@ -3611,7 +3611,7 @@ object Form1: TForm1
     Left = 24
     Top = 16
     object MenuItem1: TMenuItem
-      Caption = 'Дата'
+      Caption = 'Приложение'
       object Separator1: TMenuItem
         Caption = '-'
       end

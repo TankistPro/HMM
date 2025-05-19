@@ -11,6 +11,7 @@ procedure GeneratePalette;
 function IsEven(n: Integer): Boolean;
 function GetColorForNumber(num: Integer): TColor;
 function GetColor(A, X, Y: Real): TColor;
+function IsValidNumberKeyPress(const CurrentText: string; Key: Char): Boolean;
 
 var
    selectedHMM: String;
@@ -170,11 +171,39 @@ begin
   //B := GetColorComponent(A, X + 200, Y + 100, Percent); // сдвиг координат для B
   //Result := RGBToColor(R, G, B);
 
-  Value := Ker(Round(Abs(A * Sin(X * 0.25 + Y * 0.55))));
+  Value := Ker(Round(Abs(A * Sin(X * 0.1 + Y * 0.55))));
   // Value от 1 до 9, нормируем в диапазон [0..1]
   t := (Value - 1) / 8; // 0 при Value=1, 1 при Value=9
   Result := InterpolateColor(ColorStart, ColorEnd, t);
 end;
+
+function IsValidNumberKeyPress(const CurrentText: string; Key: Char): Boolean;
+begin
+  // Разрешаем цифры, Backspace
+  if Key in ['0'..'9', #8] then
+  begin
+    Result := True;
+    Exit;
+  end;
+
+  // Разрешаем знак минус только в начале и только один раз
+  if Key = '-' then
+  begin
+    Result := (Length(CurrentText) = 0) and (Pos('-', CurrentText) = 0);
+    Exit;
+  end;
+
+  // Разрешаем только один десятичный разделитель (запятая или точка)
+  if (Key = ',') or (Key = '.') then
+  begin
+    Result := (Pos(',', CurrentText) = 0) and (Pos('.', CurrentText) = 0);
+    Exit;
+  end;
+
+  // Все остальные символы запрещены
+  Result := False;
+end;
+
 
 // Является ли число четным
 function IsEven(n: Integer): Boolean;

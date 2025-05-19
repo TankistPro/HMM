@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Dialogs, StdCtrls,Graphics, ExtCtrls, Buttons,
-  Math, HMM1D_module, about_2dform;
+  HMM1D_module, about_2dform;
 
 type
 
@@ -40,6 +40,9 @@ type
     procedure UpdateRender;
     function LogicalXToPixel(X: Double): Integer;
     function LogicalYToPixel(Y: Double): Integer;
+    procedure xMaxValueKeyPress(Sender: TObject; var Key: char);
+    procedure xMinValueKeyPress(Sender: TObject; var Key: char);
+    procedure yMinValueKeyPress(Sender: TObject; var Key: char);
   private
     Aspect: TPoint;
     xMin, xMax, yMin, yMax: Double;
@@ -198,6 +201,7 @@ begin
   // Метки на оси Y
   labelStepY := (yMax - yMin) / 10;
   y := yMin;
+  XPos := LogicalXToPixel(0);
   while y <= yMax do
   begin
     if Abs(y) < 1e-6 then
@@ -231,9 +235,9 @@ end;
 
 procedure TForm4.BitBtn3Click(Sender: TObject);
 begin
-  if not Assigned(AdboutFrom) then
-        AdboutFrom := TForm6.Create(Application);
-    AdboutFrom.Show;
+  if not Assigned(AboutForm) then
+        AboutForm := TForm6.Create(Application);
+    AboutForm.Show;
 end;
 
 function TForm4.LogicalXToPixel(X: Double): Integer;
@@ -244,6 +248,34 @@ end;
 function TForm4.LogicalYToPixel(Y: Double): Integer;
 begin
   Result := Round(Image1.Height - (Y - yMin) / (yMax - yMin) * Image1.Height);
+  //Result := Round((Y - yMin) / (yMax - yMin) * Image1.Height);
+end;
+
+procedure TForm4.xMaxValueKeyPress(Sender: TObject; var Key: char);
+var
+  Edit: TEdit;
+begin
+  Edit := TEdit(Sender);
+  if not IsValidNumberKeyPress(Edit.Text, Key) then
+    Key := #0;  // Запретить ввод
+end;
+
+procedure TForm4.xMinValueKeyPress(Sender: TObject; var Key: char);
+var
+  Edit: TEdit;
+begin
+  Edit := TEdit(Sender);
+  if not IsValidNumberKeyPress(Edit.Text, Key) then
+    Key := #0;  // Запретить ввод
+end;
+
+procedure TForm4.yMinValueKeyPress(Sender: TObject; var Key: char);
+var
+  Edit: TEdit;
+begin
+  Edit := TEdit(Sender);
+  if not IsValidNumberKeyPress(Edit.Text, Key) then
+    Key := #0;  // Запретить ввод
 end;
 
 
