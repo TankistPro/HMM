@@ -38,7 +38,14 @@
 
 Хромоматематическое моделирование для формулы Z = Ker(A *SIN(x + y)), где Ker - ядро числа a, т. е. рекурсивная сумма цифр.
 
-<img width="624" alt="image" src="https://github.com/user-attachments/assets/c9596d7f-f1fc-4b79-b532-b491d55f2bda" />
+<img width="619" alt="image" src="https://github.com/user-attachments/assets/27ae3bf8-de13-486e-b67a-c29930b5554e" />
+
+<img width="623" alt="image" src="https://github.com/user-attachments/assets/09866e48-9ce9-4e29-ad5c-ff76c5423f5d" />
+
+<img width="620" alt="image" src="https://github.com/user-attachments/assets/1019fc90-ff4a-4d35-8034-e4118301ec4c" />
+
+
+
 
 
 
